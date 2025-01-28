@@ -5,7 +5,24 @@
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+    
+    <!-- Servlet pour effectuer un test unitaire -->
+    <servlet>
+        <servlet-name>TestUnitaireServlet</servlet-name>
+        <servlet-class>com.clavardage.servlets.TestUnitaireServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestUnitaireServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet qui permet de rediriger la requête / vers l'interface utilisateur correspondante -->
+    <servlet>
+        <servlet-name>IndexUIServlet</servlet-name>
+        <servlet-class>com.clavardage.servlets.IndexUIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexUIServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
