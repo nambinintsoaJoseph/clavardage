@@ -3,9 +3,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Bienvenue sur Clavardage</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:forward page="/accueil"></jsp:forward>
     </body>
 </html>

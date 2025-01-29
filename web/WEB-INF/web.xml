@@ -16,13 +16,23 @@
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
     
-    <!-- Servlet qui permet de rediriger la requête / vers l'interface utilisateur correspondante -->
+    <!-- Servlet pour rediriger vers l'interface d'accueil -->
     <servlet>
-        <servlet-name>IndexUIServlet</servlet-name>
-        <servlet-class>com.clavardage.servlets.IndexUIServlet</servlet-class>
+        <servlet-name>AccueilUIServlet</servlet-name>
+        <servlet-class>com.clavardage.servlets.AccueilUIServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>IndexUIServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>AccueilUIServlet</servlet-name>
+        <url-pattern>/accueil</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet pour rediriger vers l'interface de création d'un compte -->
+    <servlet>
+        <servlet-name>CreationCompteUIServlet</servlet-name>
+        <servlet-class>com.clavardage.servlets.CreationCompteUIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreationCompteUIServlet</servlet-name>
+        <url-pattern>/creation_compte</url-pattern>
     </servlet-mapping>
 </web-app>
