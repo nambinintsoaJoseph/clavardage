@@ -35,4 +35,15 @@
         <servlet-name>CreationCompteUIServlet</servlet-name>
         <url-pattern>/creation_compte</url-pattern>
     </servlet-mapping>
+    
+    <!-- Servlet pour gérer la création d'un compte utilisateur --> 
+    <servlet>
+        <servlet-name>CreationCompteServlet</servlet-name>
+        <servlet-class>com.clavardage.servlets.CreationCompteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreationCompteServlet</servlet-name>
+        <url-pattern>/creer_compte</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

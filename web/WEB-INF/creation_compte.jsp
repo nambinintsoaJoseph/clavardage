@@ -41,7 +41,7 @@
                 <h1 class="text-center">Création d'un compte Clavardage</h1>
             </div>
 
-            <form class="container">
+            <form method="POST" action="${pageContext.request.contextPath}/creer_compte" class="container">
                 <div>
                     <label for="nom" class="form-label"><i class="fa fa-id-card"></i> Nom <span class="text-danger">*</span> </label>
                     <input type="text" name="nom" id="nom" class="form-control" autofocus="" />
