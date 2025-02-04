@@ -16,7 +16,7 @@
                 </div>
                 <div class="col d-flex justify-content-end p-2">
                     <div class="">
-                        <a href="" class="btn text-light"> <i class="fa fa-user-plus"></i> Créer un compte</a>
+                        <a href="${pageContext.request.contextPath}/creer_compte" class="btn text-light"> <i class="fa fa-user-plus"></i> Créer un compte</a>
                     </div>
                     <div class="">
                         <a href="" class="btn text-light ms-3"><i class="fa fa-user"></i> Se connecter</a>

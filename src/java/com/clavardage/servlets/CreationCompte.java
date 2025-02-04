@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CreationCompteServlet extends HttpServlet
+public class CreationCompte extends HttpServlet
 {
+    @Override 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        this.getServletContext().getRequestDispatcher("/WEB-INF/creer_compte.jsp").forward(request, response);
+    }
+    
     @Override 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
@@ -25,7 +31,7 @@ public class CreationCompteServlet extends HttpServlet
          
         try 
         {
-            utilisateurDAO.ajouter(utilisateurBean);
+            utilisateurDAO.addUtilisateur(utilisateurBean);
             this.getServletContext().getRequestDispatcher("/WEB-INF/info_profil.jsp").forward(request, response);
         } 
         catch (ClassNotFoundException ex) 

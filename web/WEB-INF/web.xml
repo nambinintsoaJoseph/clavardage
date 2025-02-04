@@ -18,32 +18,32 @@
     
     <!-- Servlet pour rediriger vers l'interface d'accueil -->
     <servlet>
-        <servlet-name>AccueilUIServlet</servlet-name>
-        <servlet-class>com.clavardage.servlets.AccueilUIServlet</servlet-class>
+        <servlet-name>Accueil</servlet-name>
+        <servlet-class>com.clavardage.servlets.Accueil</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AccueilUIServlet</servlet-name>
+        <servlet-name>Accueil</servlet-name>
         <url-pattern>/accueil</url-pattern>
     </servlet-mapping>
     
-    <!-- Servlet pour rediriger vers l'interface de création d'un compte -->
+    <!-- Servlet pour gérer la création d'un compte utilisateur -->
     <servlet>
-        <servlet-name>CreationCompteUIServlet</servlet-name>
-        <servlet-class>com.clavardage.servlets.CreationCompteUIServlet</servlet-class>
+        <servlet-name>CreationCompte</servlet-name>
+        <servlet-class>com.clavardage.servlets.CreationCompte</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CreationCompteUIServlet</servlet-name>
-        <url-pattern>/creation_compte</url-pattern>
+        <servlet-name>CreationCompte</servlet-name>
+        <url-pattern>/creer_compte</url-pattern>
     </servlet-mapping>
     
-    <!-- Servlet pour gérer la création d'un compte utilisateur --> 
+    <!-- Servlet pour rediriger vers l'information du profil --> 
     <servlet>
-        <servlet-name>CreationCompteServlet</servlet-name>
-        <servlet-class>com.clavardage.servlets.CreationCompteServlet</servlet-class>
+        <servlet-name>InformationProfil</servlet-name>
+        <servlet-class>com.clavardage.servlets.InformationProfil</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CreationCompteServlet</servlet-name>
-        <url-pattern>/creer_compte</url-pattern>
+        <servlet-name>InformationProfil</servlet-name>
+        <url-pattern>/information_profil</url-pattern>
     </servlet-mapping>
     
 </web-app>

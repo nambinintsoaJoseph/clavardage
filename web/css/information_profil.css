@@ -1,0 +1,22 @@
+.entete {
+    background-color: #2e1169;
+    padding: 5px;
+}
+
+form { 
+    width: 50% !important; 
+}
+
+form > div {
+    margin-top: 10px !important; 
+}
+
+input:focus {
+    box-shadow: none !important; 
+    outline: none !important;
+}
+
+.btn-valider {
+    background-color: #2e1169 !important;
+    border: none !important;
+}

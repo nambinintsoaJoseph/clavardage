@@ -138,4 +138,17 @@ public class Utilisateur implements Serializable
     {
         this.photo_profil = photo_profil;
     } 
+    
+    public void afficher() 
+    {
+        System.out.println("Nom : " + this.nom);
+        System.out.println("Prenom : " + this.prenom); 
+        System.out.println("Date de naissance : " + this.date_naissance);
+        System.out.println("Email : " + this.email);
+        System.out.println("Mot de passe : " + this.mot_passe);
+        System.out.println("Residence : " + this.residence);
+        System.out.println("Info scolaire : " + this.info_scolaire);
+        System.out.println("Info professionnel : " + this.info_professionnel);
+        System.out.println("Photo de profil : " + this.photo_profil);
+    }
 }
