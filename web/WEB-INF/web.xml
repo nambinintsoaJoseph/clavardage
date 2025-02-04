@@ -46,4 +46,13 @@
         <url-pattern>/information_profil</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet pour l'authentification de l'utilisateur -->
+    <servlet>
+        <servlet-name>SeConnecter</servlet-name>
+        <servlet-class>com.clavardage.servlets.SeConnecter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SeConnecter</servlet-name>
+        <url-pattern>/seconnecter</url-pattern>
+    </servlet-mapping>
 </web-app>
