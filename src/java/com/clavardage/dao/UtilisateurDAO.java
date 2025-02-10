@@ -153,7 +153,6 @@ public class UtilisateurDAO
      */
     public List<Utilisateur> findUtilisateurByName(String nomUtilisateur) throws ClassNotFoundException, SQLException
     {
-        Jdbc jdbc = new Jdbc();
         List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
         String sql = "SELECT id_utilisateur, nom, prenom, residence, photo_profil "
                 + "FROM utilisateur WHERE LOWER(nom) = LOWER(?) OR LOWER(prenom) = LOWER(?)";
@@ -187,6 +186,25 @@ public class UtilisateurDAO
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    /**
+     * Permet de récuperer l'id_utilisateur récement ajouté  dans la base de données. 
+     * 
+     * @return id_utilisateur en cas de succès, -1 sinon 
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    public int getLastInsertIdUtilisateur() throws SQLException, ClassNotFoundException
+    {
+        String sql = "SELECT MAX(id_utilisateur) AS last_insert_id FROM utilisateur"; 
+        ResultSet resultat = jdbc.getConnection().createStatement().executeQuery(sql);
+        
+        if(resultat.next())
+            return resultat.getInt("last_insert_id");
+        
+        return -1;
     }
     
     /**
