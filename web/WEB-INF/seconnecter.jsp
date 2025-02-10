@@ -35,7 +35,7 @@
                         <p class="text-danger"> <i class="fa fa-warning"></i> Impossible de se connecter, adresse email ou mot de passe incorrecte.</p>
                     </div>
                 </c:if>
-                
+                 
                 <div>
                     <label for="email" class="form-label"><i class="fa fa-at"></i> Email <span class="text-danger">*</span> </label>
                     <input type="text" name="email" id="email" class="form-control" autofocus="" />

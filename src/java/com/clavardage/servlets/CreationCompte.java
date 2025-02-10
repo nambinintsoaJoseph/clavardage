@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CreationCompte extends HttpServlet
 {
@@ -22,6 +23,7 @@ public class CreationCompte extends HttpServlet
     {
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         Utilisateur utilisateurBean = new Utilisateur();
+        HttpSession session = request.getSession();
         
         utilisateurBean.setNom(request.getParameter("nom"));
         utilisateurBean.setPrenom(request.getParameter("prenom"));
@@ -32,7 +34,10 @@ public class CreationCompte extends HttpServlet
         try 
         {
             utilisateurDAO.addUtilisateur(utilisateurBean);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/info_profil.jsp").forward(request, response);
+            utilisateurBean.setId_utilisateur(utilisateurDAO.getLastInsertIdUtilisateur());
+            session.setAttribute("utilisateurConnecte", utilisateurBean);
+            //this.getServletContext().getRequestDispatcher("/membres/information_profil").forward(request, response);
+            response.sendRedirect( request.getContextPath() +  "/membres/information_profil" );
         } 
         catch (ClassNotFoundException ex) 
         {

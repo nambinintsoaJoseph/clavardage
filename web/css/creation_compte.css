@@ -3,6 +3,8 @@
     padding: 5px;
 }
 
+.row { margin: 0px !important; }
+
 form { 
     width: 50% !important; 
 }

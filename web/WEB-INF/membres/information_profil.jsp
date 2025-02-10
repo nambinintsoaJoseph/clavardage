@@ -21,10 +21,13 @@
                 </div>
             </div>
         </header>
-        
+                    
         <main>
-            <div class="mt-1">
-                <h4 class="text-center text-success"> <i class="fa fa-circle-check"></i> Votre compte a été créé avec succès.</h4>
+            <div class="alert alert-succes alert-dismissible fade bg-success show">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <div class="text-white">
+                    <p class="text-center"> <i class="fa fa-circle-check"></i> Votre compte a été créé avec succès.</p>
+                </div>
             </div>
             
             <form method="POST" action="${pageContext.request.contextPath}/information_profil" class="container">
@@ -54,5 +57,7 @@
                 </div>
             </form>
         </main>
+                
+        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     </body>
 </html>

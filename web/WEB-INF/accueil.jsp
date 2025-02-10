@@ -19,7 +19,7 @@
                         <a href="${pageContext.request.contextPath}/creer_compte" class="btn text-light"> <i class="fa fa-user-plus"></i> Créer un compte</a>
                     </div>
                     <div class="">
-                        <a href="" class="btn text-light ms-3"><i class="fa fa-user"></i> Se connecter</a>
+                        <a href="${pageContext.request.contextPath}/seconnecter" class="btn text-light ms-3"><i class="fa fa-user"></i> Se connecter</a>
                     </div>
                 </div>
             </div>

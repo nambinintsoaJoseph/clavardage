@@ -6,6 +6,16 @@
         </session-timeout>
     </session-config>
     
+    <!-- Filtre permettant de restreindres les parties vues de l'application pour les utilisateurs non connecté -->
+    <filter>
+        <filter-name>EspaceMembreFilter</filter-name>
+        <filter-class>com.clavardage.filters.EspaceMembreFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EspaceMembreFilter</filter-name>
+        <url-pattern>/membres/*</url-pattern>
+    </filter-mapping>
+    
     <!-- Servlet pour effectuer un test unitaire -->
     <servlet>
         <servlet-name>TestUnitaireServlet</servlet-name>
@@ -43,7 +53,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>InformationProfil</servlet-name>
-        <url-pattern>/information_profil</url-pattern>
+        <url-pattern>/membres/information_profil</url-pattern>
     </servlet-mapping>
     
     <!-- Servlet pour l'authentification de l'utilisateur -->

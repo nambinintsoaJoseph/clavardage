@@ -6,6 +6,8 @@ form > div {
     margin-top: 10px !important; 
 }
 
+.row { margin: 0px !important; }
+
 .btn-seconnecter, .btn-seconnecter:hover {
     margin-top: 10px !important;
     background-color: #2e1169;
