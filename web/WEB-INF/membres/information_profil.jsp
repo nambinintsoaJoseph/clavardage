@@ -9,18 +9,18 @@
         <title>Information supplémentaire</title>
     </head>
     <body>
-        <header>
-            <div class="container-fluid row entete">
-                <div class="col d-flex justify-content-start p-3">
-                    <div class="text-light ms-3"> <i class="fa fa-comments"></i> Clavardage</div>
-                </div>
-                <div class="col d-flex justify-content-end p-2">
-                    <div class="">
-                        <a href="${pageContext.request.contextPath}/" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
-                    </div>
+    <header>
+        <div class="container-fluid row entete">
+            <div class="col d-flex justify-content-start p-3">
+                <div class="text-light ms-3"> <i class="fa fa-comments"></i> Clavardage</div>
+            </div>
+            <div class="col d-flex justify-content-end p-2">
+                <div class="">
+                    <a href="${pageContext.request.contextPath}/" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
                     
         <main>
             <div class="alert alert-succes alert-dismissible fade bg-success show">
@@ -30,7 +30,9 @@
                 </div>
             </div>
             
-            <form method="POST" action="${pageContext.request.contextPath}/information_profil" class="container">
+            <h3 class="text-center">Information supplémentaire</h3>
+            
+            <form method="POST" action="${pageContext.request.contextPath}/membres/information_profil" class="container" enctype="multipart/form-data">
                 <div>
                     <label for="residence" class="form-label"> <i class="fa fa-house"></i> Résidence : </label>
                     <input type="text" name="residence" id="residence" class="form-control" placeholder="Nom de votre ville" />
@@ -42,8 +44,8 @@
                 </div>
                 
                 <div>
-                    <label for="info_scolaire" class="form-label"> <i class="fa fa-briefcase"></i> Information professionnel : </label>
-                    <input type="text" name="info_scolaire" id="info_scolaire" class="form-control" placeholder="Nom de votre organisation" />
+                    <label for="info_professionnel" class="form-label"> <i class="fa fa-briefcase"></i> Information professionnel : </label>
+                    <input type="text" name="info_professionnel" id="info_professionnel" class="form-control" placeholder="Nom de votre organisation" />
                 </div>
                 
                 <div>

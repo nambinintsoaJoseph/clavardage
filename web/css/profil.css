@@ -1,0 +1,43 @@
+.entete {
+    background-color: #2e1169;
+    padding: 5px;
+}
+
+.row { margin: 0px !important; }
+
+.photo-profil {
+    width: 250px !important;
+    height: 250px !important; 
+    border-radius: 50%;
+}
+
+.container-photo-profil {
+    display: flex; 
+    justify-content: center;
+}
+
+.info {
+    width: 50%; 
+    margin: auto;
+    margin-top: 15px !important;
+}
+
+input:focus {
+    box-shadow: none !important; 
+    outline: none !important;
+}
+
+@media screen and (max-width: 992px) {
+    .btn-action {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-action > button {
+        margin-top: 5px;
+    }
+    
+    .info {
+        width: 100%
+    }
+}

@@ -7,7 +7,7 @@ public class Utilisateur implements Serializable
     private int id_utilisateur; 
     private String nom; 
     private String prenom; 
-    private String date_naissance;
+    private String date_naissance; 
     private String email; 
     private String mot_passe; 
     private String residence; 
@@ -58,12 +58,12 @@ public class Utilisateur implements Serializable
         }
         this.prenom = prenom;
     }
-
+    
     public String getDate_naissance() 
     {
         return date_naissance;
     }
-    
+
     public void setDate_naissance(String date_naissance) 
     {
         String regexDateNaissance = "^(19|20)\\d\\d-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
@@ -73,7 +73,7 @@ public class Utilisateur implements Serializable
         }
         this.date_naissance = date_naissance;
     }
-
+    
     public String getEmail() 
     {
         return email;
@@ -139,16 +139,4 @@ public class Utilisateur implements Serializable
         this.photo_profil = photo_profil;
     } 
     
-    public void afficher() 
-    {
-        System.out.println("Nom : " + this.nom);
-        System.out.println("Prenom : " + this.prenom); 
-        System.out.println("Date de naissance : " + this.date_naissance);
-        System.out.println("Email : " + this.email);
-        System.out.println("Mot de passe : " + this.mot_passe);
-        System.out.println("Residence : " + this.residence);
-        System.out.println("Info scolaire : " + this.info_scolaire);
-        System.out.println("Info professionnel : " + this.info_professionnel);
-        System.out.println("Photo de profil : " + this.photo_profil);
-    }
 }
