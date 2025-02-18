@@ -37,15 +37,21 @@ public class InformationProfil extends HttpServlet
         Part filePart = request.getPart("photo_profil"); // Récuperer le fichier 
         String nomFichier = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+        String path_photo_profil = null;
         
-        File uploadDir = new File(uploadPath);
-        if(!uploadDir.exists()) uploadDir.mkdir(); // Créer le dossier s'il n'existe pas 
-        
-        String filePath = uploadPath + File.separator + nomFichier;
-        filePart.write(filePath); // Enregistrer le fichier sur le disque 
-        
-        // Construire le chemin à stocker dans la base de données 
-        String path_photo_profil = UPLOAD_DIR + "/" + nomFichier;
+        if(nomFichier != null && !nomFichier.isEmpty())
+        {
+            File uploadDir = new File(uploadPath);
+            if(!uploadDir.exists()) uploadDir.mkdir(); // Créer le dossier s'il n'existe pas 
+
+            String filePath = uploadPath + File.separator + nomFichier;
+            filePart.write(filePath); // Enregistrer le fichier sur le disque 
+            
+            System.out.println("Le photo a ete enregistrer dans le serveur.");
+
+            // Construire le chemin à stocker dans la base de données 
+            path_photo_profil = UPLOAD_DIR + "/" + nomFichier;
+        }
         
         utilisateurBean.setResidence(residence);
         utilisateurBean.setInfo_scolaire(info_scolaire);

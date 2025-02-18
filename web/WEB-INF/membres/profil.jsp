@@ -15,7 +15,8 @@
         
         <style>
             .photo-profil {
-                background-image: url("<c:out value="${ pageContext.request.contextPath }/${sessionScope.utilisateurConnecte.photo_profil}" />");
+                <%-- Si l'utilisateur a une photo de profil, on l'affiche. Dans le cas contraire, on affiche l'avatar par défaut --%>
+                background-image: url("<c:choose><c:when test="${ !empty sessionScope.utilisateurConnecte.photo_profil}"><c:out value="${ pageContext.request.contextPath }/${sessionScope.utilisateurConnecte.photo_profil}" /></c:when><c:otherwise><c:out value="${pageContext.request.contextPath}/assets/default.png" /></c:otherwise></c:choose>");
                 background-size: cover;
             }
         </style>
@@ -96,7 +97,7 @@
                         Date de naissance : 
                         <c:out value="${jour}" />  
                         
-                        <%-- Mois de naissance en lettre --%>
+                        <%-- Conversion du mois de naissance en lettre --%>
                         <c:choose>
                             <c:when test="${ mois == '01'}"> janvier </c:when>
                             <c:when test="${ mois == '02'}"> février </c:when>
@@ -118,19 +119,43 @@
                     <%-- Résidence --%>
                     <p> 
                         <i class="fa fa-house"></i> 
-                        Résidence : <c:out value="${ sessionScope.utilisateurConnecte.residence }" escapeXml="true" />
+                        Résidence : 
+                        <c:choose>
+                            <c:when test="${ !empty sessionScope.utilisateurConnecte.residence }">
+                                <c:out value="${ sessionScope.utilisateurConnecte.residence }" escapeXml="true" />
+                            </c:when>
+                            <c:otherwise>
+                                -
+                            </c:otherwise>
+                        </c:choose>
                     </p>
                     
                     <%-- Etablissement --%>
                     <p> 
                         <i class="fa fa-graduation-cap"></i> 
-                        Etablissement : <c:out value="${ sessionScope.utilisateurConnecte.info_scolaire }" escapeXml="true" />
+                        Etablissement : 
+                        <c:choose>
+                            <c:when test="${ !empty sessionScope.utilisateurConnecte.info_scolaire }">
+                                <c:out value="${ sessionScope.utilisateurConnecte.info_scolaire }" escapeXml="true" />
+                            </c:when>
+                            <c:otherwise>
+                                -
+                            </c:otherwise>
+                        </c:choose>
                     </p>
                     
                     <%-- Emploi --%>
                     <p> 
                         <i class="fa fa-briefcase"></i> 
                         Emploi : <c:out value="${ sessionScope.utilisateurConnecte.info_professionnel}" escapeXml="true" />
+                        <c:choose>
+                            <c:when test="${ !empty sessionScope.utilisateurConnecte.info_professionnel }">
+                                <c:out value="${ sessionScope.utilisateurConnecte.info_professionnel}" escapeXml="true" />
+                            </c:when>
+                            <c:otherwise>
+                                -
+                            </c:otherwise>
+                        </c:choose>
                     </p>
                     
                     <%-- Adresse email --%>

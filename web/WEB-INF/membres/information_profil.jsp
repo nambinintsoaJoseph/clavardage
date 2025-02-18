@@ -55,7 +55,7 @@
                 
                 <div class="mt-2">
                     <button type="submit" class="btn btn-primary btn-valider"> <i class="fa fa-check"></i> Valider</button>
-                    <a class="btn btn-secondary"> <i class="fa fa-close"></i> Ignorer </a>
+                    <a href="${pageContext.request.contextPath}/membres/profil" class="btn btn-secondary"> <i class="fa fa-close"></i> Ignorer </a>
                 </div>
             </form>
         </main>
