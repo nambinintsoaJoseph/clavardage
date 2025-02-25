@@ -6,6 +6,14 @@
         </session-timeout>
     </session-config>
     
+    <!-- Forcer l'encodage UTF-8 sur toutes les JSP -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+    
     <!-- Filtre permettant de restreindres les parties vues de l'application pour les utilisateurs non connecté -->
     <filter>
         <filter-name>EspaceMembreFilter</filter-name>

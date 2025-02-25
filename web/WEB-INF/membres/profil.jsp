@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.util.Date" %>
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -147,7 +148,7 @@
                     <%-- Emploi --%>
                     <p> 
                         <i class="fa fa-briefcase"></i> 
-                        Emploi : <c:out value="${ sessionScope.utilisateurConnecte.info_professionnel}" escapeXml="true" />
+                        Emploi : 
                         <c:choose>
                             <c:when test="${ !empty sessionScope.utilisateurConnecte.info_professionnel }">
                                 <c:out value="${ sessionScope.utilisateurConnecte.info_professionnel}" escapeXml="true" />

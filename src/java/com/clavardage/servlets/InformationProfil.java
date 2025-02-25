@@ -25,6 +25,7 @@ public class InformationProfil extends HttpServlet
     @Override 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
+        request.setCharacterEncoding("UTF-8");
         final String UPLOAD_DIR = "uploads";
         HttpSession session = request.getSession();
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();

@@ -12,7 +12,7 @@ public class Jdbc
 {
     public Connection getConnection() throws ClassNotFoundException 
     {
-        String url = "jdbc:mysql://localhost:3306/clavardage"; 
+        String url = "jdbc:mysql://localhost:3306/clavardage?useUnicode=true&characterEncoding=utf8"; 
         String utilisateur = "root"; 
         String motDePasse = ""; 
         Connection connexion = null; 

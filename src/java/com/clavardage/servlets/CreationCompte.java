@@ -21,6 +21,7 @@ public class CreationCompte extends HttpServlet
     @Override 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
+        request.setCharacterEncoding("UTF-8");
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         Utilisateur utilisateurBean = new Utilisateur();
         HttpSession session = request.getSession();

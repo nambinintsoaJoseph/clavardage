@@ -38,7 +38,7 @@ public class Utilisateur implements Serializable
     
     public void setNom(String nom) 
     {
-        if(nom == null || !nom.matches("^[a-zA-Zàâäéèëêîïôùû]+$")) 
+        if(nom == null || !nom.matches("^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[-\\s][A-Za-zÀ-ÖØ-öø-ÿ]+)*$")) 
         {
             throw new IllegalArgumentException("Nom invalide.");
         }
@@ -52,7 +52,7 @@ public class Utilisateur implements Serializable
     
     public void setPrenom(String prenom) 
     {
-        if(prenom == null || !prenom.matches("^[a-zA-Zàâäéèëêîïôùû]+$")) 
+        if(prenom == null || !prenom.matches("^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[-\\s][A-Za-zÀ-ÖØ-öø-ÿ]+)*$")) 
         {
             throw new IllegalArgumentException("Prenom invalide.");
         }
