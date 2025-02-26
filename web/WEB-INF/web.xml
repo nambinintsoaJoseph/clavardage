@@ -89,4 +89,14 @@
         <url-pattern>/membres/profil</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet pour modifier les informations d'un utilisateur --> 
+    <servlet>
+        <servlet-name>ModificationProfil</servlet-name>
+        <servlet-class>com.clavardage.servlets.ModificationProfil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificationProfil</servlet-name>
+        <url-pattern>/membres/modifier_profil</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

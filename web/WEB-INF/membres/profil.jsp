@@ -76,6 +76,7 @@
             <div class="container container-photo-profil mt-2">
                 <%-- <img src="${pageContext.request.contextPath}/uploads/post.jpg" class="mx-auto d-block photo_profil" alt="Photo de profil" /> --%>
                 <div class="photo-profil center"></div>
+                <button class="btn btn-primary btn-photo-profil" data-bs-toggle="modal" data-bs-target="#modalModifierPhoto" > <i class="fa fa-camera"></i> </button>
             </div>
             
             <div class="container">
@@ -166,7 +167,7 @@
                     </p>
                     
                     <div class="btn-action d-flex justify-content-around">
-                        <button class="btn btn-primary text-center" data-bs-toggle="modal" data-bs-target="#modalModifierCompte" > <i class="fa fa-pencil"></i>  Modifier les informations</button>
+                        <button class="btn btn-primary text-center" data-bs-toggle="modal" data-bs-target="#modalModifierCompte" > <i class="fa fa-pencil"></i>  Modifier mes informations</button>
                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSupprimerCompte"> <i class="fa fa-trash"></i>  Supprimer mon compte</button>
                     </div>
                 </div>
@@ -185,7 +186,7 @@
 
                         <!-- Corps -->
                         <div class="modal-body">
-                            <form>
+                            <form method="POST" action="${pageContext.request.contextPath}/membres/modifier_profil">
                                 
                                 <div>
                                     <label class="form-label"> <i class="fa fa-calendar"></i>  Date de naissance</label>
@@ -199,12 +200,12 @@
                                 
                                 <div class="mt-3">
                                     <label> <i class="fa fa-graduation-cap"></i> Etablissement</label>
-                                    <input type="text" name="residence" class="form-control" placeholder="Nom de votre établissement" />
+                                    <input type="text" name="info_scolaire" class="form-control" placeholder="Nom de votre établissement" />
                                 </div>
                                 
                                 <div class="mt-3">
                                     <label>  <i class="fa fa-briefcase"></i> Emploi </label>
-                                    <input type="text" name="info_scolaire" class="form-control" placeholder="Nom de votre organisation" />
+                                    <input type="text" name="info_professionnel" class="form-control" placeholder="Nom de votre organisation" />
                                 </div>
                                 
                                 <div class="mt-3">
@@ -223,6 +224,34 @@
                 </div>
             </div>
             
+            <%-- Modal : Modification du photo de profil --%> 
+            <div class="modal fade" id="modalModifierPhoto">
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4> <i class="fa fa-camera-retro"></i>  Personnalisez votre photo de profil</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                    
+                        <div class="modal-body">
+                            <form>
+                                
+                                <p>
+                                    Pour mettre à jour votre photo de profil, sélectionnez une image depuis votre appareil. 
+                                    Assurez-vous de choisir un fichier au format JPG, JPEG ou PNG.
+                                </p>
+                                
+                                <input class="form-control" type="file" name="photo_profil" />
+                                
+                                <div class="d-flex justify-content-end mt-2">
+                                     <button class="btn btn-primary mt-2"  type="submit"> <i class="fa fa-images"></i> Changer ma photo de profil</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <%-- Modal : confirmation de suppression de compte --%>
             <div class="modal fade" id="modalSupprimerCompte">
                 <div class="modal-dialog">
@@ -235,13 +264,8 @@
                         
                         <div class="modal-body">
                             <p>
-                                Etes vous sur de supprimer votre compte ?  <br>
-                                Vous allez perdre :
-                                <ul>
-                                    
-                                    <li>toutes vos conversations</li>
-                                    <li>tout contact avec vos ami(e)s</li>
-                                </ul>
+                                Attention : La suppression de votre compte est une action définitive. Vous perdrez toutes vos conversations, 
+                                ainsi que tout contact avec vos amis. Cette action est irréversible. Êtes-vous sûr de vouloir continuer ?
                             </p>
                             
                             <%-- Saisie du mot de passe pour confirmer la suppression du compte --%> 
@@ -251,9 +275,9 @@
                                 </div>
                             </form>
                             
-                            <div class="mt-2">
+                            <div class="d-flex justify-content-end mt-3">
                                 <a class="btn btn-danger"> <i class="fa fa-trash"></i> Supprimer</a>
-                                <a class="btn btn-success" data-bs-dismiss="modal"> <i class="fa fa-times"></i> Annuler</a>
+                                <a class="btn btn-success ms-2" data-bs-dismiss="modal"> <i class="fa fa-times"></i> Annuler</a>
                             </div>
                         </div>
                         

@@ -27,6 +27,16 @@ input:focus {
     outline: none !important;
 }
 
+.btn-photo-profil {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    position: relative; 
+    top: 170px; 
+    right: 60px;
+}
+
 @media screen and (max-width: 992px) {
     .btn-action {
         display: flex;
