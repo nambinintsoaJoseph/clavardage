@@ -34,7 +34,7 @@ input:focus {
     border-radius: 50%;
     position: relative; 
     top: 170px; 
-    right: 60px;
+    right: 40px;
 }
 
 @media screen and (max-width: 992px) {

@@ -234,13 +234,11 @@
                         </div>
                     
                         <div class="modal-body">
-                            <form>
-                                
-                                <p>
+                            <p>
                                     Pour mettre à jour votre photo de profil, sélectionnez une image depuis votre appareil. 
                                     Assurez-vous de choisir un fichier au format JPG, JPEG ou PNG.
-                                </p>
-                                
+                            </p>
+                            <form method="POST" action="${pageContext.request.contextPath}/membres/modifier_photo" enctype="multipart/form-data">
                                 <input class="form-control" type="file" name="photo_profil" />
                                 
                                 <div class="d-flex justify-content-end mt-2">

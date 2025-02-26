@@ -99,4 +99,19 @@
         <url-pattern>/membres/modifier_profil</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet pour modifier la photo de profil d'un utilisateur -->
+    <servlet>
+        <servlet-name>ModificationPhoto</servlet-name>
+        <servlet-class>com.clavardage.servlets.ModificationPhoto</servlet-class>
+        <multipart-config>
+            <file-size-threshold>1048576</file-size-threshold>   
+            <max-file-size>10485760</max-file-size>
+            <max-request-size>52428800</max-request-size>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificationPhoto</servlet-name>
+        <url-pattern>/membres/modifier_photo</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
