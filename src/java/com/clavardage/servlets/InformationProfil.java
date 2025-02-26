@@ -2,74 +2,81 @@ package com.clavardage.servlets;
 
 import com.clavardage.beans.Utilisateur;
 import com.clavardage.dao.UtilisateurDAO;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
+public class InformationProfil extends HttpServlet {
 
-public class InformationProfil extends HttpServlet
-{
-    @Override 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/membres/information_profil.jsp").forward(request, response);
+    private static final String UPLOAD_DIR = "uploads";
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/membres/information_profil.jsp").forward(request, response);
     }
-    
-    @Override 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        final String UPLOAD_DIR = "uploads";
+
         HttpSession session = request.getSession();
-        UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-        Utilisateur utilisateurBean = (Utilisateur) session.getAttribute("utilisateurConnecte");
-        String residence = request.getParameter("residence"); 
-        String info_scolaire = request.getParameter("info_scolaire"); 
-        String info_professionnel = request.getParameter("info_professionnel");
-        
-        // Gérer l'upload du fichier 
-        Part filePart = request.getPart("photo_profil"); // Récuperer le fichier 
-        String nomFichier = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-        String path_photo_profil = null;
-        
-        if(nomFichier != null && !nomFichier.isEmpty())
-        {
-            File uploadDir = new File(uploadPath);
-            if(!uploadDir.exists()) uploadDir.mkdir(); // Créer le dossier s'il n'existe pas 
-
-            String filePath = uploadPath + File.separator + nomFichier;
-            filePart.write(filePath); // Enregistrer le fichier sur le disque 
-            
-            System.out.println("Le photo a ete enregistrer dans le serveur.");
-
-            // Construire le chemin à stocker dans la base de données 
-            path_photo_profil = UPLOAD_DIR + "/" + nomFichier;
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateurConnecte");
+        if (utilisateur == null) {
+            response.sendRedirect(request.getContextPath() + "/connexion");
+            return;
         }
-        
-        utilisateurBean.setResidence(residence);
-        utilisateurBean.setInfo_scolaire(info_scolaire);
-        utilisateurBean.setInfo_professionnel(info_professionnel);
-        utilisateurBean.setPhoto_profil(path_photo_profil);
-        
-        try 
-        {
-            utilisateurDAO.updateUtilisateur(utilisateurBean);
-            response.sendRedirect( request.getContextPath() +  "/membres/profil" );
-        } 
-        catch (ClassNotFoundException ex) 
-        {
-            ex.printStackTrace();
-        } catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }    
+
+        // Récupération des paramètres du formulaire
+        String residence = request.getParameter("residence");
+        String infoScolaire = request.getParameter("info_scolaire");
+        String infoProfessionnel = request.getParameter("info_professionnel");
+
+        // Gestion de l'upload de la photo de profil
+        String photoProfilPath = handleFileUpload(request.getPart("photo_profil"), getServletContext().getRealPath(""));
+
+        // Mise à jour des informations de l'utilisateur
+        utilisateur.setResidence(residence);
+        utilisateur.setInfo_scolaire(infoScolaire);
+        utilisateur.setInfo_professionnel(infoProfessionnel);
+        utilisateur.setPhoto_profil(photoProfilPath);
+
+        try {
+            new UtilisateurDAO().updateUtilisateur(utilisateur);
+            response.sendRedirect(request.getContextPath() + "/membres/profil");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Gère l'upload du fichier et retourne le chemin de stockage relatif.
+     */
+    private String handleFileUpload(Part filePart, String applicationPath) throws IOException {
+        if (filePart == null || filePart.getSubmittedFileName().isEmpty()) {
+            return null;
+        }
+
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        String uploadPath = applicationPath + File.separator + UPLOAD_DIR;
+
+        // Création du dossier si inexistant
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists() && !uploadDir.mkdirs()) {
+            System.err.println("Erreur : Impossible de créer le dossier d'upload.");
+            return null;
+        }
+
+        // Sauvegarde du fichier sur le serveur
+        String filePath = uploadPath + File.separator + fileName;
+        filePart.write(filePath);
+
+        System.out.println("Photo enregistrée : " + filePath);
+
+        return UPLOAD_DIR + "/" + fileName; // Retourne le chemin relatif à stocker en base
     }
 }
