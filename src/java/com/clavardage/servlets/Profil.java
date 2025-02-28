@@ -13,4 +13,10 @@ public class Profil extends HttpServlet
     {
         this.getServletContext().getRequestDispatcher("/WEB-INF/membres/profil.jsp").forward(request, response);
     }
+    
+    @Override 
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        doGet(request, response); 
+    }
 }

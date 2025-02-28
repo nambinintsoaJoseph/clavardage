@@ -24,16 +24,6 @@
         <url-pattern>/membres/*</url-pattern>
     </filter-mapping>
     
-    <!-- Servlet pour effectuer un test unitaire -->
-    <servlet>
-        <servlet-name>TestUnitaireServlet</servlet-name>
-        <servlet-class>com.clavardage.servlets.TestUnitaireServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TestUnitaireServlet</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-    
     <!-- Servlet pour rediriger vers l'interface d'accueil -->
     <servlet>
         <servlet-name>Accueil</servlet-name>
@@ -112,6 +102,16 @@
     <servlet-mapping>
         <servlet-name>ModificationPhoto</servlet-name>
         <url-pattern>/membres/modifier_photo</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet permettant de supprimer un compte utilisateur --> 
+    <servlet>
+        <servlet-name>SuppressionCompte</servlet-name>
+        <servlet-class>com.clavardage.servlets.SuppressionCompte</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SuppressionCompte</servlet-name>
+        <url-pattern>/membres/supprimer_compte</url-pattern>
     </servlet-mapping>
     
 </web-app>

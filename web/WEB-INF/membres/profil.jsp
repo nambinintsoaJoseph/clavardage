@@ -72,6 +72,17 @@
                 </div>
             </nav>
             
+            <%-- Message d'erreur (suppression de compte) --%>
+            <c:if test="${!empty requestScope.error}">
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    
+                  
+                        &ensp;&ensp;<i class="fa fa-triangle-exclamation"></i> <c:out value="${requestScope.error}" />
+                    
+                </div>
+            </c:if>
+            
             <%-- Photo de profil de l'utilisateur --%>
             <div class="container container-photo-profil mt-2">
                 <%-- <img src="${pageContext.request.contextPath}/uploads/post.jpg" class="mx-auto d-block photo_profil" alt="Photo de profil" /> --%>
@@ -267,23 +278,24 @@
                             </p>
                             
                             <%-- Saisie du mot de passe pour confirmer la suppression du compte --%> 
-                            <form method="POST">
+                            <form method="POST" action="${pageContext.request.contextPath}/membres/supprimer_compte">
                                 <div>
-                                    <input type="password" name="mot_de_passe" placeholder="Saisir votre mot de passe" class="form-control" />
+                                    <input type="password" name="mot_passe" placeholder="Saisir votre mot de passe" class="form-control" />
+                                
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button class="btn btn-danger" type="submit"> <i class="fa fa-trash"></i> Supprimer</button>
+                                        <a class="btn btn-success ms-2" data-bs-dismiss="modal"> <i class="fa fa-times"></i> Annuler</a>
+                                    </div>
                                 </div>
                             </form>
                             
-                            <div class="d-flex justify-content-end mt-3">
-                                <a class="btn btn-danger"> <i class="fa fa-trash"></i> Supprimer</a>
-                                <a class="btn btn-success ms-2" data-bs-dismiss="modal"> <i class="fa fa-times"></i> Annuler</a>
-                            </div>
+                            
                         </div>
                         
                     </div>
                 </div>
             </div>
-            
-            
+                           
         </main>
                 
         <srcipt src="${pageContext.request.contextPath}/js/jquery.js" type="text/javascript"></srcipt>
