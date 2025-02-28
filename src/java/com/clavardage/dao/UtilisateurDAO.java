@@ -13,6 +13,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Bibliothèque de hashage (pour vérifier qu'un mot de passe correspont au hash stocké dans la base de données)
+import org.mindrot.jbcrypt.BCrypt; 
+
 public class UtilisateurDAO 
 {
     private final Jdbc jdbc = new Jdbc();
@@ -215,28 +218,29 @@ public class UtilisateurDAO
      * 
      * @return true si les informations d'authentification sont corretes, false sinon.
      */
-    public boolean authentificateUtilisateur(String email, String mot_passe) throws ClassNotFoundException, SQLException
+    public boolean authentificateUtilisateur(String email, String mot_passe) throws ClassNotFoundException, SQLException 
     {
-        String sql = "SELECT id_utilisateur, email, mot_passe FROM utilisateur "
-                + "WHERE email = ? and mot_passe = ?";
-        
-        try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql))
-        {
-            stmt.setString(1, email);
-            stmt.setString(2, mot_passe);
+        String sql = "SELECT id_utilisateur, email, mot_passe FROM utilisateur WHERE email = ?";
+
+        try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
+            // On remplace seulement l'email, pas le mot de passe
+            stmt.setString(1, email); 
+
             ResultSet utilisateursAffecte = stmt.executeQuery();
-            
-            if(utilisateursAffecte.next())
-                return utilisateursAffecte.getInt(1) > 0;
-        }
-        catch(ClassNotFoundException ex) 
-        {
+
+            if (utilisateursAffecte.next()) {
+                // Récupère le hash du mot de passe stocké dans la base de données
+                String mot_passe_hashe = utilisateursAffecte.getString("mot_passe");
+
+                // Compare le mot de passe fourni avec le hash stocké dans la base de données
+                if (BCrypt.checkpw(mot_passe, mot_passe_hashe)) {
+                    return true;
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
-        }
-        catch(SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
+        } 
+
         return false; 
-    }
+    }   
 }

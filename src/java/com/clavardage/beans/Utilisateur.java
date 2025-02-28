@@ -2,6 +2,9 @@ package com.clavardage.beans;
 
 import java.io.Serializable;
 
+// Bibliothèque de hashage (pour hasher un mot de passe) 
+import org.mindrot.jbcrypt.BCrypt; 
+
 public class Utilisateur implements Serializable
 {
     private int id_utilisateur; 
@@ -96,7 +99,17 @@ public class Utilisateur implements Serializable
 
     public void setMot_passe(String mot_passe) 
     {
-        this.mot_passe = mot_passe;
+        /**
+         * Hasher le mot de passe de l'utilisateur.
+         * 
+         * BCrypt.getsalt(12) est utilisé pour générer un sel, un élément aléatoire qui est combiné avec le mot de 
+         * passe avant de la hasher. 
+         * Le sel empêche que deux utilisateurs ayant le même mot de passe aient le même hash.
+         * 
+         */
+        
+        this.mot_passe = BCrypt.hashpw(mot_passe, BCrypt.gensalt(12));
+        
     }
     
     public String getResidence() 
