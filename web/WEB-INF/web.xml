@@ -114,4 +114,14 @@
         <url-pattern>/membres/supprimer_compte</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet pour la déconnexion d'un utilisateur -->
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>com.clavardage.servlets.Deconnexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/membre/deconnexion</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

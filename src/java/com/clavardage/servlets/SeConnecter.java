@@ -1,5 +1,6 @@
 package com.clavardage.servlets;
 
+import com.clavardage.beans.Utilisateur;
 import com.clavardage.dao.UtilisateurDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class SeConnecter extends HttpServlet
 {
@@ -20,14 +22,18 @@ public class SeConnecter extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         String email = request.getParameter("email"); 
+        HttpSession session = request.getSession(); 
         String mot_passe = request.getParameter("mot_passe"); 
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO(); 
-         
+        Utilisateur utilisateur = new Utilisateur(); 
+        
         try 
         {
-            if(utilisateurDAO.authentificateUtilisateur(email, mot_passe))
+            utilisateur = utilisateurDAO.authentificateUtilisateur(email, mot_passe);
+            if(utilisateur != null)
             {
-                // Si l'authenfication fonctionne : 
+                session.setAttribute("utilisateurConnecte", utilisateur);
+                response.sendRedirect(request.getContextPath() + "/membres/profil");
             }
             else 
             {

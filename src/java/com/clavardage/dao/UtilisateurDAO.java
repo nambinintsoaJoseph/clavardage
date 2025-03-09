@@ -218,7 +218,7 @@ public class UtilisateurDAO
      * 
      * @return true si les informations d'authentification sont corretes, false sinon.
      */
-    public boolean authentificateUtilisateur(String email, String mot_passe) throws ClassNotFoundException, SQLException 
+    public Utilisateur authentificateUtilisateur(String email, String mot_passe) throws ClassNotFoundException, SQLException 
     {
         String sql = "SELECT id_utilisateur, email, mot_passe FROM utilisateur WHERE email = ?";
 
@@ -226,21 +226,23 @@ public class UtilisateurDAO
             // On remplace seulement l'email, pas le mot de passe
             stmt.setString(1, email); 
 
-            ResultSet utilisateursAffecte = stmt.executeQuery();
+            ResultSet utilisateurAffecte = stmt.executeQuery();
 
-            if (utilisateursAffecte.next()) {
+            if (utilisateurAffecte.next()) {
                 // Récupère le hash du mot de passe stocké dans la base de données
-                String mot_passe_hashe = utilisateursAffecte.getString("mot_passe");
+                String mot_passe_hashe = utilisateurAffecte.getString("mot_passe");
 
                 // Compare le mot de passe fourni avec le hash stocké dans la base de données
                 if (BCrypt.checkpw(mot_passe, mot_passe_hashe)) {
-                    return true;
+                    Utilisateur utilisateur = new Utilisateur(); 
+                    utilisateur = this.findUtilisateurById(utilisateurAffecte.getInt("id_utilisateur")); 
+                    return utilisateur;
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         } 
 
-        return false; 
+        return null; 
     }   
 }
