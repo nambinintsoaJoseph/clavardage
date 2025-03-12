@@ -46,6 +46,7 @@ public class InformationProfil extends HttpServlet {
         utilisateur.setPhoto_profil(photoProfilPath);
 
         try {
+            System.out.println("Affichage de l'id avant la modification : " + utilisateur.getId_utilisateur());
             new UtilisateurDAO().updateUtilisateur(utilisateur);
             response.sendRedirect(request.getContextPath() + "/membres/profil");
         } catch (ClassNotFoundException | SQLException e) {

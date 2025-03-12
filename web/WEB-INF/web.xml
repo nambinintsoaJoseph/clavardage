@@ -124,4 +124,14 @@
         <url-pattern>/membre/deconnexion</url-pattern>
     </servlet-mapping>
     
+    <!-- Pour trouver une personne -->
+    <servlet>
+        <servlet-name>RecherchePersonne</servlet-name>
+        <servlet-class>com.clavardage.servlets.RecherchePersonne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecherchePersonne</servlet-name>
+        <url-pattern>/membre/recherche_personne</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

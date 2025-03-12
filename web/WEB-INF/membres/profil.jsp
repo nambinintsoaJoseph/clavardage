@@ -30,7 +30,7 @@
                 </div>
                 <div class="col d-flex justify-content-end p-2">
                     <div class="">
-                        <a href="${pageContext.request.contextPath}/" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
+                        <a href="${pageContext.request.contextPath}/membre/deconnexion" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
                     </div>
                 </div>
             </div>
@@ -64,8 +64,8 @@
                             </li>
                         </ul>
                         
-                        <form class="d-flex">
-                          <input class="form-control me-2" type="search" placeholder="Trouver une personne" aria-label="Search">
+                        <form class="d-flex" method="POST" action="${pageContext.request.contextPath}/membre/recherche_personne">
+                          <input name="nom" class="form-control me-2" type="search" placeholder="Trouver une personne" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit"> <i class="fa fa-search"></i></button>
                         </form>
                     </div>

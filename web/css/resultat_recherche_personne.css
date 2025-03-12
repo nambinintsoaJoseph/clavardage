@@ -1,0 +1,32 @@
+.entete {
+    background-color: #2e1169;
+    padding: 5px;
+}
+
+.row { margin: 0px !important; }
+
+.card {
+    width: 250px; 
+}
+
+.card img {
+    height: 250px; 
+}
+
+.ajouter, .ajouter:hover {
+    background-color: #2e1169; 
+    border: none; 
+    width: 218px;
+}
+
+.resultat-recherche {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+@media screen and (max-width: 576px) {
+    .resultat-recherche {
+        grid-template-columns: 1fr; 
+    }
+}

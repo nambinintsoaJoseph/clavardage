@@ -76,10 +76,10 @@ public class UtilisateurDAO
     public void updateUtilisateur(Utilisateur utilisateur) throws ClassNotFoundException, SQLException 
     {
         String sql = "UPDATE utilisateur SET nom = ?, prenom = ?, date_naissance = ?, "
-                + "email = ?, mot_passe = ?, residence = ?, info_scolaire = ?, "
+                + "email = ?, residence = ?, info_scolaire = ?, "
                 + "info_professionnel = ?, photo_profil = ? WHERE id_utilisateur = ?";
         executeSQLCommand(sql, utilisateur.getNom(), utilisateur.getPrenom(),
-                utilisateur.getDate_naissance(), utilisateur.getEmail(), utilisateur.getMot_passe(),
+                utilisateur.getDate_naissance(), utilisateur.getEmail(),
                 utilisateur.getResidence(), utilisateur.getInfo_scolaire(), utilisateur.getInfo_professionnel(), 
                 utilisateur.getPhoto_profil(), utilisateur.getId_utilisateur());
     }
@@ -120,6 +120,7 @@ public class UtilisateurDAO
             {
                 while(utilisateurTrouve.next())
                 {
+                    utilisateur.setId_utilisateur(utilisateurTrouve.getInt("id_utilisateur"));
                     utilisateur.setNom(utilisateurTrouve.getString("nom"));
                     utilisateur.setPrenom(utilisateurTrouve.getString("prenom"));
                     utilisateur.setDate_naissance(utilisateurTrouve.getString("date_naissance"));
@@ -157,7 +158,7 @@ public class UtilisateurDAO
     public List<Utilisateur> findUtilisateurByName(String nomUtilisateur) throws ClassNotFoundException, SQLException
     {
         List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
-        String sql = "SELECT id_utilisateur, nom, prenom, residence, photo_profil "
+        String sql = "SELECT id_utilisateur, nom, prenom, residence, info_scolaire, info_professionnel, photo_profil "
                 + "FROM utilisateur WHERE LOWER(nom) = LOWER(?) OR LOWER(prenom) = LOWER(?)";
         
         try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql))
@@ -172,6 +173,8 @@ public class UtilisateurDAO
                 utilisateur.setId_utilisateur(utilisateursTrouve.getInt("id_utilisateur"));
                 utilisateur.setNom(utilisateursTrouve.getString("nom"));
                 utilisateur.setPrenom(utilisateursTrouve.getString("prenom"));
+                utilisateur.setInfo_scolaire(utilisateursTrouve.getString("info_scolaire"));
+                utilisateur.setInfo_professionnel(utilisateursTrouve.getString("info_professionnel"));
                 utilisateur.setResidence(utilisateursTrouve.getString("residence"));
                 utilisateur.setPhoto_profil(utilisateursTrouve.getString("photo_profil"));
                 
@@ -235,6 +238,7 @@ public class UtilisateurDAO
                 // Compare le mot de passe fourni avec le hash stocké dans la base de données
                 if (BCrypt.checkpw(mot_passe, mot_passe_hashe)) {
                     Utilisateur utilisateur = new Utilisateur(); 
+                    System.out.println("authentificateUtilisateur : " + utilisateurAffecte.getInt("id_utilisateur")); 
                     utilisateur = this.findUtilisateurById(utilisateurAffecte.getInt("id_utilisateur")); 
                     return utilisateur;
                 }
