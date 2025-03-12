@@ -201,27 +201,27 @@
                                 
                                 <div>
                                     <label class="form-label"> <i class="fa fa-calendar"></i>  Date de naissance</label>
-                                    <input type="date" name="date_naissance" class="form-control" />
+                                    <input type="date" name="date_naissance" class="form-control" value="<c:out value="${sessionScope.utilisateurConnecte.date_naissance}" />" />
                                 </div>
                                 
                                 <div class="mt-3">
                                     <label> <i class="fa fa-house"></i>  Résidence</label>
-                                    <input type="text" name="residence" class="form-control" placeholder="Votre ville" />
+                                    <input type="text" name="residence" class="form-control" placeholder="Votre ville" value="<c:out value="${ sessionScope.utilisateurConnecte.residence }" />" />
                                 </div>
                                 
                                 <div class="mt-3">
                                     <label> <i class="fa fa-graduation-cap"></i> Etablissement</label>
-                                    <input type="text" name="info_scolaire" class="form-control" placeholder="Nom de votre établissement" />
+                                    <input type="text" name="info_scolaire" class="form-control" placeholder="Nom de votre établissement" value="<c:out value="${ sessionScope.utilisateurConnecte.info_scolaire }" escapeXml="true" />"  />
                                 </div>
                                 
                                 <div class="mt-3">
                                     <label>  <i class="fa fa-briefcase"></i> Emploi </label>
-                                    <input type="text" name="info_professionnel" class="form-control" placeholder="Nom de votre organisation" />
+                                    <input type="text" name="info_professionnel" class="form-control" placeholder="Nom de votre organisation" value="<c:out value="${ sessionScope.utilisateurConnecte.info_professionnel}" escapeXml="true" />" />
                                 </div>
                                 
                                 <div class="mt-3">
                                     <label>  <i class="fa fa-at"></i>  Adresse email </label>
-                                    <input type="text" name="email" class="form-control"  />
+                                    <input type="text" name="email" class="form-control" value="<c:out value="${ sessionScope.utilisateurConnecte.email }" escapeXml="true" />" />
                                 </div>
                                 
                                 <div class="d-flex justify-content-end mt-3">
