@@ -134,4 +134,14 @@
         <url-pattern>/membres/recherche_personne</url-pattern>
     </servlet-mapping>
     
+    <!-- Pour afficher la liste d'ami --> 
+    <servlet>
+        <servlet-name>Ami</servlet-name>
+        <servlet-class>com.clavardage.servlets.Ami</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Ami</servlet-name>
+        <url-pattern>/membres/ami</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
