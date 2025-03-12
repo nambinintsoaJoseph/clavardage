@@ -131,7 +131,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>RecherchePersonne</servlet-name>
-        <url-pattern>/membre/recherche_personne</url-pattern>
+        <url-pattern>/membres/recherche_personne</url-pattern>
     </servlet-mapping>
     
 </web-app>

@@ -42,7 +42,7 @@
                                 <a class="nav-link" aria-current="page" href="#"> <i class="fa fa-envelope"></i> Messages</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa fa-user"></i> Profil</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/membres/profil"> <i class="fa fa-user"></i> Profil</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"> <i class="fa fa-newspaper"></i> Notifications </a>
@@ -52,7 +52,7 @@
                             </li>
                         </ul>
                         
-                        <form class="d-flex" method="POST" action="${pageContext.request.contextPath}/membre/recherche_personne">
+                        <form class="d-flex" method="POST" action="${pageContext.request.contextPath}/membres/recherche_personne">
                             <input name="nom" class="form-control me-2" type="search" placeholder="Trouver une personne" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit"> <i class="fa fa-search"></i></button>
                         </form>

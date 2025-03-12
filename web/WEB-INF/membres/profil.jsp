@@ -64,7 +64,7 @@
                             </li>
                         </ul>
                         
-                        <form class="d-flex" method="POST" action="${pageContext.request.contextPath}/membre/recherche_personne">
+                        <form class="d-flex" method="POST" action="${pageContext.request.contextPath}/membres/recherche_personne">
                           <input name="nom" class="form-control me-2" type="search" placeholder="Trouver une personne" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit"> <i class="fa fa-search"></i></button>
                         </form>

@@ -23,7 +23,7 @@ public class SuppressionCompte extends HttpServlet
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateurConnecte"); 
         if(utilisateur == null) 
         {
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/seconnecter");
             return; 
         }
         
@@ -31,9 +31,9 @@ public class SuppressionCompte extends HttpServlet
         {
             if(utilisateurDAO.authentificateUtilisateur(utilisateur.getEmail(), mot_passe))
             {
-                new UtilisateurDAO().deleteUtilisateur(utilisateur);
+                utilisateurDAO.deleteUtilisateur(utilisateur);
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/seconnecter");
+                response.sendRedirect(request.getContextPath() + "/");
             }
             else
             {
