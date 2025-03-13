@@ -124,7 +124,7 @@
         <url-pattern>/membres/deconnexion</url-pattern>
     </servlet-mapping>
     
-    <!-- Pour trouver une personne -->
+    <!-- Servlet pour trouver une personne -->
     <servlet>
         <servlet-name>RecherchePersonne</servlet-name>
         <servlet-class>com.clavardage.servlets.RecherchePersonne</servlet-class>
@@ -134,7 +134,7 @@
         <url-pattern>/membres/recherche_personne</url-pattern>
     </servlet-mapping>
     
-    <!-- Pour afficher la liste d'ami --> 
+    <!-- Servlet pour afficher la liste d'amis d'un utilisateur --> 
     <servlet>
         <servlet-name>Ami</servlet-name>
         <servlet-class>com.clavardage.servlets.Ami</servlet-class>
@@ -142,6 +142,16 @@
     <servlet-mapping>
         <servlet-name>Ami</servlet-name>
         <url-pattern>/membres/ami</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet pour retirer un ami --> 
+    <servlet>
+        <servlet-name>RetirerAmi</servlet-name>
+        <servlet-class>com.clavardage.servlets.RetirerAmi</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetirerAmi</servlet-name>
+        <url-pattern>/membres/retirer_ami</url-pattern>
     </servlet-mapping>
     
 </web-app>

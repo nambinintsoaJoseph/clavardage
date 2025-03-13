@@ -16,7 +16,7 @@
     height: 295.25px; 
 }
 
-.btn-retirer, .btn-retirer:hover {
+.btn-retirer, .btn-retirer:hover, .btn-retirer:active, .btn-retirer:focus {
     width: 260px;
     background-color: #2e1169;
     border: none; 

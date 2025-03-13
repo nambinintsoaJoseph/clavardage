@@ -107,7 +107,38 @@
                                       </c:if>
                                   </p>
                                   
-                                  <a class="btn btn-primary btn-retirer"> <i class="fa fa-user-xmark"></i> Retirer de la liste d'amis </a>
+                                  <button type="button" class="btn btn-primary btn-retirer" data-bs-toggle="modal" data-bs-target="#confirmationSuppression">
+                                        <i class="fa fa-user-xmark"></i> Retirer de la liste d'ami
+                                  </button>
+                                </div>
+                            </div>
+                            
+                            <%-- Confirmation du suppression --%>
+                            <div class="modal" id="confirmationSuppression">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title text-danger"> Confirmer la suppression d'ami </h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <p>
+                                                Etes-vous sûr de vouloir retirer 
+                                                <c:out value="${ ami.nom }" /> <c:out value="${ ami.prenom }" />
+                                                de votre liste d'amis ? <span class="text-danger">Cette action est irréversible.</span>
+                                            </p>
+                                            
+                                            <div class="d-flex justify-content-end">
+                                                <a class="btn btn-primary btn-retirer" href="${pageContext.request.contextPath}/membres/retirer_ami?id_ami_utilisateur=<c:out value="${ami.id_utilisateur}" />"> <i class="fa fa-user-xmark"></i> Retirer </a>
+                                   
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </c:forEach>
@@ -118,5 +149,9 @@
                 </c:otherwise>
             </c:choose>
         </main>
+                          
+        <srcipt src="${pageContext.request.contextPath}/js/jquery.js" type="text/javascript"></srcipt>
+        <srcipt src="${pageContext.request.contextPath}/js/pooper.min.js" type="text/javascript"></srcipt>
+        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     </body>
 </html>

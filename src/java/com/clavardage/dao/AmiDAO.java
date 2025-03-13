@@ -51,6 +51,7 @@ public class AmiDAO
     }
     
     /**
+     * Permet de récuperer les amis d'un utilisateur
      * 
      * @param id_utilisateur, id de l'utilisateur connecté
      * 
@@ -98,4 +99,24 @@ public class AmiDAO
          }
          return null; 
     }
+    
+    /**
+     * Permet de retirer un utilisateur de la liste d'amis de l'utilisateur actuellement connecté.
+     * 
+     * @param id_utilisateur : id de l'utilisateur connecté
+     * @param id_autre_utilisateur : id de l'ami de l'utilisateur connecté 
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public void retirer(int id_utilisateur, int id_autre_utilisateur) throws ClassNotFoundException, SQLException
+    {
+        String sql = "DELETE FROM ami " +
+                        "WHERE (id_demandeur = ? AND id_receveur = ?) " +
+                        "   OR (id_demandeur = ? AND id_receveur = ?) " +
+                        "AND status = 'accepte';";
+        executeSQLCommand(sql, id_utilisateur, id_autre_utilisateur, id_autre_utilisateur, id_utilisateur);
+    }
+    
+    
 }
