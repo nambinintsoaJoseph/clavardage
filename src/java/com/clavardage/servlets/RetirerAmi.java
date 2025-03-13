@@ -33,11 +33,10 @@ public class RetirerAmi extends HttpServlet
         try 
         {
             amiDAO.retirer(id_utilisateur, id_ami_utilisateur);
+            response.sendRedirect(request.getContextPath() + "/membres/ami");
         } catch (ClassNotFoundException | SQLException ex) 
         {
             ex.printStackTrace();
         } 
-        
-        this.getServletContext().getRequestDispatcher(VUE_REDIRECTION).forward(request, response);
     }
 }

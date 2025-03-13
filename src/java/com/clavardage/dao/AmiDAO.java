@@ -118,5 +118,19 @@ public class AmiDAO
         executeSQLCommand(sql, id_utilisateur, id_autre_utilisateur, id_autre_utilisateur, id_utilisateur);
     }
     
-    
+    /**
+     * Permet à l'utilisateur d'ajouter un ami.
+     * 
+     * @param id_utilisateur : celui qui envoi la demande 
+     * @param id_autre_utilisateur : celui qui reçoit la demande
+     * 
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public void ajouter(int id_utilisateur, int id_autre_utilisateur) throws ClassNotFoundException, SQLException 
+    {
+        String sql = "INSERT INTO ami (id_demandeur, id_receveur, status) " +
+                        "VALUES (?, ?, 'en_attente');";
+        executeSQLCommand(sql, id_utilisateur, id_autre_utilisateur);
+    }
 }
