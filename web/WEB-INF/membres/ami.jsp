@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/fontawesome/css/all.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ami.css" />
-        <title>Liste d'ami</title>
+        <title>Liste d'amis</title>
     </head>
     <body>
         <header>
@@ -43,7 +43,7 @@
                                 <a class="nav-link" aria-current="page" href="#"> <i class="fa fa-envelope"></i> Messages</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa fa-user"></i> Profil</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/membres/profil"> <i class="fa fa-user"></i> Profil</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"> <i class="fa fa-newspaper"></i> Notifications </a>
@@ -76,10 +76,10 @@
                                         <img class="card-img-top" src="<c:out value="${ pageContext.request.contextPath }" />/assets/default.png" alt="" /> 
                                     </c:when>
                                     <c:otherwise>
-                                        <img class="card-img-top" src="<c:out value="${ pageContext.request.contextPath }" />/<c:out value="${ami.photo_profil}" />" alt="" /> 
+                                        <img class="card-img-top photo-ami" src="<c:out value="${ pageContext.request.contextPath }" />/<c:out value="${ami.photo_profil}" />" alt="" /> 
                                     </c:otherwise>
                                 </c:choose>
-                              
+                        
                                 <div class="card-body">
                                   <h4 class="card-title"> <c:out value="${ ami.nom }" /> <c:out value="${ ami.prenom }" /> </h4>
                                   
@@ -95,7 +95,7 @@
                                   <p class="card-text"> 
                                       <c:if test="${not empty ami.info_scolaire}">
                                             <i class="fa fa-graduation-cap"></i>  
-                                            <c:out value="${ ami.info_scolaire }" /> 
+                                            <c:out value="${ ami.info_scolaire }" />
                                       </c:if>
                                   </p>
                                   
@@ -107,7 +107,7 @@
                                       </c:if>
                                   </p>
                                   
-                                  
+                                  <a class="btn btn-primary btn-retirer"> <i class="fa fa-user-xmark"></i> Retirer de la liste d'amis </a>
                                 </div>
                             </div>
                         </c:forEach>

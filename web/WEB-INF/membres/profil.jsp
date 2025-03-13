@@ -30,7 +30,7 @@
                 </div>
                 <div class="col d-flex justify-content-end p-2">
                     <div class="">
-                        <a href="${pageContext.request.contextPath}/membre/deconnexion" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
+                        <a href="${pageContext.request.contextPath}/membres/deconnexion" class="btn text-light ms-3"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                                 <a class="nav-link"> <i class="fa fa-newspaper"></i> Notifications </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"> <i class="fa fa-users"></i> Ami(e)s </a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/membres/ami"> <i class="fa fa-users"></i> Ami(e)s </a>
                             </li>
                         </ul>
                         

@@ -63,7 +63,7 @@ public class AmiDAO
     {
         List<Utilisateur> amis = new ArrayList<Utilisateur>();
         String sql = "SELECT u.id_utilisateur, u.nom, u.prenom, u.date_naissance, u.residence, u.info_scolaire, " +
-                        "u.info_professionnel FROM ami a " +
+                        "u.info_professionnel, u.photo_profil FROM ami a " +
                         "JOIN utilisateur u ON (a.id_demandeur = u.id_utilisateur OR a.id_receveur = u.id_utilisateur) " +
                         "WHERE (a.id_demandeur = ? OR a.id_receveur = ?) " +
                         "AND a.status = 'accepte' " +
@@ -85,6 +85,7 @@ public class AmiDAO
                 utilisateur.setResidence(amiUtilisateur.getString("residence"));
                 utilisateur.setInfo_scolaire(amiUtilisateur.getString("info_scolaire"));
                 utilisateur.setInfo_professionnel(amiUtilisateur.getString("info_professionnel"));
+                utilisateur.setPhoto_profil(amiUtilisateur.getString("photo_profil"));
 
                 // On ajoute l'utilisateur dans la liste d'ami 
                 amis.add(utilisateur);

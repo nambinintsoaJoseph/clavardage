@@ -48,7 +48,7 @@
                                 <a class="nav-link"> <i class="fa fa-newspaper"></i> Notifications </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"> <i class="fa fa-users"></i> Ami(e)s </a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/membres/ami"> <i class="fa fa-users"></i> Ami(e)s </a>
                             </li>
                         </ul>
                         

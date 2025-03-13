@@ -11,6 +11,17 @@
     justify-items: center;
 }
 
+.photo-ami {
+    width: 295.25px; 
+    height: 295.25px; 
+}
+
+.btn-retirer, .btn-retirer:hover {
+    width: 260px;
+    background-color: #2e1169;
+    border: none; 
+}
+
 @media screen and (max-width: 576px) {
     .liste-amis {
         grid-template-columns: 1fr; 

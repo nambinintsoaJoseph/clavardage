@@ -121,7 +121,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Deconnexion</servlet-name>
-        <url-pattern>/membre/deconnexion</url-pattern>
+        <url-pattern>/membres/deconnexion</url-pattern>
     </servlet-mapping>
     
     <!-- Pour trouver une personne -->
