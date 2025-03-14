@@ -106,7 +106,7 @@
                                       </c:if>
                                   </p>
                                   
-                                  <a href="#" class="btn btn-primary ajouter"> <i class="fa fa-user-plus"></i> Ajouter</a>
+                                  <a href="${pageContext.request.contextPath}/ajouter_ami?id_autre_utilisateur=<c:out value="${utilisateur.id_utilisateur}" />" class="btn btn-primary ajouter"> <i class="fa fa-user-plus"></i> Ajouter</a>
                                 </div>
                             </div>
                         </c:forEach>

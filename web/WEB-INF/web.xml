@@ -154,4 +154,14 @@
         <url-pattern>/membres/retirer_ami</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet pour ajouter un ami --> 
+    <servlet>
+        <servlet-name>AjoutAmi</servlet-name>
+        <servlet-class>com.clavardage.servlets.AjoutAmi</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjoutAmi</servlet-name>
+        <url-pattern>/ajouter_ami</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
