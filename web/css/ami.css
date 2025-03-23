@@ -22,6 +22,29 @@
     border: none; 
 }
 
+.btn-confirmer, .btn-confirmer:hover {
+    background-color: #2e1169;
+    border: none;
+}
+
+btn-demande-ami:focus, btn-demande-ami:active {
+    outline: none !important; 
+    box-shadow: none !important; 
+    border: none !important; 
+}
+
+.badge {
+    background-color: red; 
+    color: white; 
+    font-size: 14px; 
+    font-weight: bold; 
+    border-radius: 50%; 
+    padding: 5px; 
+    display: inline-block; 
+    text-align: center; 
+    min-width: 25px;
+}
+
 @media screen and (max-width: 576px) {
     .liste-amis {
         grid-template-columns: 1fr; 

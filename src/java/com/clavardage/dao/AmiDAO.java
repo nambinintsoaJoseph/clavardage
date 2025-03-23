@@ -133,4 +133,51 @@ public class AmiDAO
                         "VALUES (?, ?, 'en_attente');";
         executeSQLCommand(sql, id_utilisateur, id_autre_utilisateur);
     }
+    
+    /**
+     * Permet de récuperer les demandes d'ami 
+     * 
+     * @param id_utilisateur : identifiant de l'utilisateur connecté 
+     * @return List<Utilisateur> : liste des demandes d'amis
+     * 
+     * @throws ClassNotFoundException 
+     * @throws SQLException
+     * 
+     */
+    public List<Utilisateur> getDemandes(int id_utilisateur) throws ClassNotFoundException, SQLException 
+    {
+        List<Utilisateur> demandes = new ArrayList<Utilisateur>(); 
+        String sql = "SELECT "
+                + "ami.id_ami, ami.id_demandeur, utilisateur.id_utilisateur, "
+                + "utilisateur.nom, utilisateur.prenom, utilisateur.residence, "
+                + "utilisateur.info_scolaire, utilisateur.info_professionnel, utilisateur.photo_profil, "
+                + "ami.date_demande, ami.status FROM ami "
+                + "JOIN utilisateur ON ami.id_demandeur = utilisateur.id_utilisateur "
+                + "WHERE ami.status = 'en_attente' AND ami.id_receveur = ?;";
+        try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql))
+        {
+            stmt.setInt(1, id_utilisateur);
+            ResultSet demandesAmi = stmt.executeQuery();
+            
+            while(demandesAmi.next()) 
+            {
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setId_utilisateur(demandesAmi.getInt("id_utilisateur"));
+                utilisateur.setNom(demandesAmi.getString("nom"));
+                utilisateur.setPrenom(demandesAmi.getString("prenom"));
+                utilisateur.setResidence(demandesAmi.getString("residence"));
+                utilisateur.setInfo_scolaire(demandesAmi.getString("info_scolaire"));
+                utilisateur.setInfo_professionnel(demandesAmi.getString("info_professionnel"));
+                utilisateur.setPhoto_profil(demandesAmi.getString("photo_profil"));
+                
+                demandes.add(utilisateur);
+            }
+            return demandes; 
+        }
+        catch(ClassNotFoundException | SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+        return null; 
+    }
 }

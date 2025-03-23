@@ -29,13 +29,19 @@ public class Ami extends HttpServlet
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateurConnecte");
         
         List<Utilisateur> amis = new ArrayList<Utilisateur>(); 
+        List<Utilisateur> demandeAmis = new ArrayList<Utilisateur>();
         AmiDAO amiDAO = new AmiDAO(); 
         
         try 
         {
+            // Amis 
             amis = amiDAO.getAmis(utilisateur.getId_utilisateur());
-            System.out.println(amis.size()); 
             request.setAttribute("amis", amis);
+            
+            // Demande 
+            demandeAmis = amiDAO.getDemandes(utilisateur.getId_utilisateur());
+            request.setAttribute("demandes", demandeAmis);
+            
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
         } catch (ClassNotFoundException | SQLException ex) 
         {
