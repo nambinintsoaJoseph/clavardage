@@ -180,4 +180,23 @@ public class AmiDAO
         }
         return null; 
     }
+    
+    /**
+     * Permet d'accepter une demande d'ami
+     * 
+     */
+    public void accepterDemande(int id_demandeur, int id_receveur) throws ClassNotFoundException, SQLException 
+    {
+        String sql = "UPDATE ami SET status = 'accepte' WHERE id_demandeur = ? AND id_receveur = ?"; 
+        executeSQLCommand(sql, id_demandeur, id_receveur); 
+    }
+    
+    /**
+     * Permet de supprimer une demande d'ami
+     */
+    public void supprimerDemande(int id_demandeur, int id_receveur) throws ClassNotFoundException, SQLException 
+    {
+        String sql = "DELETE FROM ami WHERE id_demandeur = ? AND id_receveur = ?"; 
+        executeSQLCommand(sql, id_demandeur, id_receveur); 
+    }
 }

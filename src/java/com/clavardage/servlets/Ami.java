@@ -40,6 +40,7 @@ public class Ami extends HttpServlet
             
             // Demande 
             demandeAmis = amiDAO.getDemandes(utilisateur.getId_utilisateur());
+            System.out.println("Nombre de demande d'ami : " + demandeAmis.size());
             request.setAttribute("demandes", demandeAmis);
             
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);

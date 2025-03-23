@@ -158,10 +158,13 @@
                 <button class="btn w-100 text-start btn-demande-ami" type="button" data-bs-toggle="collapse" data-bs-target="#demandeAmi">
                     <i class="fa fa-user-clock"></i> Demande d'ami 
                     
-                    <!-- Nombre -->
-                    <span class="badge">
-                         ${fn:length(demandes)}
-                    </span>
+                    <!-- Nombre demande(s) -->
+                    <c:if test="${(fn:length(demandes)) >= 1}">
+                        <span class="badge">
+                            ${fn:length(demandes)}
+                        </span>
+                    </c:if>
+                    
                 </button>
                 
                 <div class="collapse mt-3" id="demandeAmi">
@@ -211,13 +214,13 @@
                                               </p>
                                               
                                               <div class="d-flex justify-content-center">
-                                                  <a type="button" href="#" class="btn btn-primary btn-confirmer">
-                                                        <i class="fa fa-user-check"></i> Accepter
+                                                  <a type="button" href="${pageContext.request.contextPath}/membres/confirmation_demande?confirmation=1&id_demandeur=<c:out value="${demande.id_utilisateur}" />&id_receveur=<c:out value="${ sessionScope.utilisateurConnecte.id_utilisateur }" />" class="btn btn-primary btn-confirmer">
+                                                        <i class="fa fa-user-check"></i> Accepter 
                                                     </a>
                                                   
-                                                  <a type="button" href="" class="btn btn-danger ms-2">
+                                                  <a type="button"  href="${pageContext.request.contextPath}/membres/confirmation_demande?confirmation=0&id_demandeur=<c:out value="${demande.id_utilisateur}" />&id_receveur=<c:out value="${ sessionScope.utilisateurConnecte.id_utilisateur }" />" class="btn btn-danger ms-2">
                                                         <i class="fa fa-user-xmark"></i> Refuser
-                                                    </a>
+                                                   </a>
                                               </div>
                                               
                                             </div>

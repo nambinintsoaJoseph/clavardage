@@ -164,4 +164,13 @@
         <url-pattern>/ajouter_ami</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ConfirmationDemandeAmi</servlet-name>
+        <servlet-class>com.clavardage.servlets.ConfirmationDemandeAmi</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmationDemandeAmi</servlet-name>
+        <url-pattern>/membres/confirmation_demande</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
