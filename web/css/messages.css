@@ -1,0 +1,42 @@
+.entete {
+    background-color: #2e1169;
+    padding: 5px;
+}
+
+.row { margin: 0px !important; }
+
+.conversation-illustration {
+    width: 100px !important;
+    max-width: 100px !important;
+    display: block;
+}
+
+.conversation {
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #2e1169;
+}
+
+.btn-creer-conversation, .btn-creer-conversation:hover, .btn-creer-conversation:active {
+    background-color: #2e1169;
+    border: none;
+}
+
+/* Annimation */
+.modal.fade .modal-dialog {
+    transform: scale(0.8);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: scale(1);
+}
+
+@media screen and (max-width: 576px) {
+    .info-conversation {
+        position: relative;
+        left: 20px;
+    }
+    .text-btn {
+        display: none;
+    }
+}

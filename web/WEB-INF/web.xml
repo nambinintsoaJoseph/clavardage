@@ -173,4 +173,12 @@
         <url-pattern>/membres/confirmation_demande</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ListeConversation</servlet-name>
+        <servlet-class>com.clavardage.servlets.ListeConversation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListeConversation</servlet-name>
+        <url-pattern>/membres/messages</url-pattern>
+    </servlet-mapping>
 </web-app>

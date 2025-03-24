@@ -11,12 +11,11 @@ public class ConversationDAO {
 
     // Ajouter une conversation 
     public void ajouterConversation(Conversation conversation) throws ClassNotFoundException, SQLException {
-        String sql = "INSERT INTO conversation (titre, date_creation) VALUES (?, ?)";
+        String sql = "INSERT INTO conversation (titre) VALUES (?)";
         try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
         {
             stmt.setString(1, conversation.getTitre());
-            stmt.setString(2, conversation.getDate_creation());
-
+            
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted == 0) {
                 throw new SQLException("Échec de la création de la conversation, aucune ligne ajoutée.");
@@ -80,6 +79,35 @@ public class ConversationDAO {
         {
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0; // Retourne true si une ligne a été supprimée
+        }
+    }
+    
+    // Récuperer les conversation d'un utilisateur : 
+    public List<Conversation> getConversationUtilisateur(int id_utilisateur) throws ClassNotFoundException, SQLException 
+    {
+        List<Conversation> conversations = new ArrayList<Conversation>(); 
+        String sql = "SELECT " +
+                    " conversation.id_conversation, " +
+                    " conversation.titre, "
+                    + " conversation.date_creation" +
+                    " FROM conversation " +
+                    " JOIN conversationutilisateur " +
+                    " ON conversation.id_conversation = conversationutilisateur.id_conversation " +
+                    " WHERE conversationutilisateur.id_utilisateur = ?;";
+        try (Connection connection = jdbc.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql))
+        {
+            stmt.setInt(1, id_utilisateur);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Conversation conversation = new Conversation();
+                    conversation.setId_conversation(rs.getInt("id_conversation"));
+                    conversation.setTitre(rs.getString("titre"));
+                    conversation.setDate_creation(rs.getString("date_creation"));
+           
+                    conversations.add(conversation); 
+                }
+            }
+            return conversations; 
         }
     }
 }

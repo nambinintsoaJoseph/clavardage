@@ -51,7 +51,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"> <i class="fa fa-envelope"></i> Messages</a>
+                                <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/membres/messages"> <i class="fa fa-envelope"></i> Messages</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="#"> <i class="fa fa-user"></i> Profil</a>
